@@ -6,6 +6,7 @@
 
 import logging
 import numbers
+import pandas as pd
 
 from tqdm.auto import tqdm
 
