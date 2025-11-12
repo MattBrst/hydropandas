@@ -112,19 +112,15 @@ def create_pastastore(
         else:
             use_col = col
 
-        try:                # Check if column exists
+        try:  # Check if column exists
             obs = o[use_col]
-        except KeyError:    # Create empty obs when column not found
+        except KeyError:  # Create empty obs when column not found
             obs = pd.DataFrame(
-                index=pd.DatetimeIndex([]),
-                columns=['value'],
-                dtype=float
-            ) 
+                index=pd.DatetimeIndex([]), columns=["value"], dtype=float
+            )
 
         if kind == "oseries":
-            pstore.conn.add_oseries(
-                obs, o.name, metadata=meta, overwrite=overwrite
-            )
+            pstore.conn.add_oseries(obs, o.name, metadata=meta, overwrite=overwrite)
         else:
             pstore.conn.add_stress(
                 obs, o.name, kind, metadata=meta, overwrite=overwrite
